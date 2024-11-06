@@ -1,6 +1,7 @@
+import Divider from "./Divider";
 import { sum } from "lodash-es";
 
-const Order = ({ orderItems }) => {
+const Order = ({ orderItems, paymentMethod }) => {
   const totalAmount = sum(orderItems.map((item) => item.price));
 
   return (
@@ -13,7 +14,9 @@ const Order = ({ orderItems }) => {
           </li>
         ))}
       </ul>
+      <Divider />
       <h2>Total : {totalAmount} €</h2>
+      {paymentMethod && <h2>Moyen de paiement : {paymentMethod}</h2>}
     </div>
   );
 };

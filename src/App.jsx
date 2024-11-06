@@ -7,6 +7,7 @@ import { useState } from "react";
 
 function App() {
   const [orderItems, setOrderItems] = useState([]);
+  const [paymentMethod, setPaymentMethod] = useState(null);
 
   const printOrder = () => {
     let specific_element = document.getElementById("order").innerHTML;
@@ -23,10 +24,10 @@ function App() {
         <Header />
         <Menu setOrderItems={setOrderItems} />
         <Divider />
-        <PaymentMethods />
+        <PaymentMethods setPaymentMethod={setPaymentMethod} />
       </div>
       <div className="w-1/4 p-8">
-        <Order orderItems={orderItems} />
+        <Order orderItems={orderItems} paymentMethod={paymentMethod} />
         <Divider />
         <button onClick={printOrder} className="btn-primary w-full">
           Imprimer
