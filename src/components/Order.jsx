@@ -4,7 +4,7 @@ const Order = ({ orderItems }) => {
   const totalAmount = sum(orderItems.map((item) => item.price));
 
   return (
-    <>
+    <div id="order">
       <h1>Récapitulatif de la commande</h1>
       <ul>
         {orderItems.map((item, index) => (
@@ -14,7 +14,7 @@ const Order = ({ orderItems }) => {
         ))}
       </ul>
       <h2>Total : {totalAmount} €</h2>
-    </>
+    </div>
   );
 };
 

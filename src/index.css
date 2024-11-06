@@ -14,4 +14,8 @@
   .btn-lg {
     @apply border rounded-lg h-24 text-center flex flex-col items-center justify-center hover:bg-slate-200 uppercase;
   }
+
+  .btn-primary {
+    @apply bg-blue-600 text-white py-4 px-12 uppercase rounded-lg;
+  }
 }
