@@ -1,9 +1,9 @@
 import Divider from './Divider'
 import OrderItem from './OrderItem'
-import { sum } from 'lodash-es'
+import { getTotalAmount } from '../models/order'
 
 const Order = ({ orderItems, setOrderItems, customerName, paymentMethod }) => {
-  const totalAmount = sum(orderItems.map((item) => item.price))
+  const totalAmount = getTotalAmount(orderItems)
 
   const onPrint = () => window.print()
 
