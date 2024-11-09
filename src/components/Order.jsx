@@ -24,7 +24,7 @@ const Order = ({ orderItems, paymentMethod }) => {
       ))}
       <Divider />
       <h2>Total : {totalAmount} €</h2>
-      {paymentMethod && <h2>Moyen de paiement : {paymentMethod}</h2>}
+      {paymentMethod && <h2>Paiement : {paymentMethod}</h2>}
     </div>
   )
 }

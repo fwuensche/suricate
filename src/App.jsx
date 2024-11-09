@@ -17,7 +17,7 @@ function App() {
         <Header />
         <Menu setOrderItems={setOrderItems} />
         <Divider />
-        <PaymentMethods setPaymentMethod={setPaymentMethod} />
+        <PaymentMethods paymentMethod={paymentMethod} setPaymentMethod={setPaymentMethod} />
       </div>
       <div className='w-1/4 p-8'>
         <Order orderItems={orderItems} paymentMethod={paymentMethod} />

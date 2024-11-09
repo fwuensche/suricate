@@ -1,14 +1,19 @@
 import { PAYMENT_METHODS } from '../config'
 
-const PaymentMethods = ({ setPaymentMethod }) => {
+const PaymentMethods = ({ paymentMethod, setPaymentMethod }) => {
   return (
     <div className='flex'>
       <div className='w-1/4 flex items-center'>
         <h3>Moyen de paiement</h3>
       </div>
-      <div className='grid grid-cols-4 gap-4 w-full'>
+      <div className='grid grid-cols-4 gap-4 w-full rounded-md shadow-sm' role='group'>
         {PAYMENT_METHODS.map((method, index) => (
-          <button className='btn-lg' key={index} onClick={() => setPaymentMethod(method)}>
+          <button
+            key={index}
+            type='button'
+            className={`btn-lg ${paymentMethod === method ? 'selected' : ''}`}
+            onClick={() => setPaymentMethod(method)}
+          >
             {method}
           </button>
         ))}
