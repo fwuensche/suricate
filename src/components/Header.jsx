@@ -6,11 +6,13 @@ const Header = ({ customerName, setCustomerName }) => {
     if (name) setCustomerName(name)
   }
 
+  const reloadPage = () => window.location.reload()
+
   return (
     <div className='mb-8 flex items-center gap-4'>
-      <a href={Logo} target='_blank' rel='noopener noreferrer'>
+      <button onClick={reloadPage}>
         <img src={Logo} alt='Suricate logo' className='w-20 h-20 rounded-full' />
-      </a>
+      </button>
       <h1>SURICATE</h1>
       <div className=''>
         {!customerName && (

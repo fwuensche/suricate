@@ -1,4 +1,8 @@
 const ItemCount = ({ count }) => {
+  if (count === 0) {
+    return null
+  }
+
   return (
     <div className='flex mt-2'>
       {Array.from({ length: count }).map((_, index) => (
