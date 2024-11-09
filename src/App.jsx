@@ -9,18 +9,11 @@ function App() {
   const [orderItems, setOrderItems] = useState([]);
   const [paymentMethod, setPaymentMethod] = useState(null);
 
-  const printOrder = () => {
-    let specific_element = document.getElementById("order").innerHTML;
-    let original_elements = document.body.innerHTML;
-
-    document.body.innerHTML = specific_element;
-    window.print();
-    document.body.innerHTML = original_elements;
-  };
+  const onPrint = () => window.print();
 
   return (
     <div className="flex">
-      <div className="w-3/4 p-8">
+      <div className="w-3/4 p-8 print:hidden">
         <Header />
         <Menu setOrderItems={setOrderItems} />
         <Divider />
@@ -28,10 +21,12 @@ function App() {
       </div>
       <div className="w-1/4 p-8">
         <Order orderItems={orderItems} paymentMethod={paymentMethod} />
-        <Divider />
-        <button onClick={printOrder} className="btn-primary w-full">
-          Imprimer
-        </button>
+        <div className="print:hidden">
+          <Divider />
+          <button onClick={onPrint} className="btn-primary w-full">
+            Imprimer
+          </button>
+        </div>
       </div>
     </div>
   );
