@@ -1,3 +1,4 @@
+import Discounts from './Discounts'
 import Divider from './Divider'
 import OrderItem from './OrderItem'
 import { getTotalAmount } from '../models/order'
@@ -21,6 +22,7 @@ const Order = ({ orderItems, setOrderItems, customerName, paymentMethod }) => {
         <OrderItem key={index} item={item} index={index} removeItem={removeItem} />
       ))}
       <Divider />
+      <Discounts orderItems={orderItems} />
       <h2>Total : {totalAmount} €</h2>
       {paymentMethod && <h2>Paiement : {paymentMethod}</h2>}
       <div className='print:hidden'>

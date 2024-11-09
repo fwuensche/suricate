@@ -2,7 +2,7 @@ import { FORMULES } from '../config'
 import { sum } from 'lodash-es'
 
 export const getDiscounts = (orderItems) => {
-  let discounts = 0
+  let discounts = []
 
   FORMULES.forEach((formule) => {
     const isFormuleApplicable = formule.item_combinations.every((section) =>
@@ -10,7 +10,7 @@ export const getDiscounts = (orderItems) => {
     )
 
     if (isFormuleApplicable) {
-      discounts += formule.discount
+      discounts.push({ name: formule.name, value: formule.discount })
     }
   })
 
@@ -19,7 +19,8 @@ export const getDiscounts = (orderItems) => {
 
 export const getTotalAmount = (orderItems) => {
   let fullAmount = sum(orderItems.map((item) => item.price))
-  let totalDiscount = getDiscounts(orderItems)
+  let discounts = getDiscounts(orderItems)
+  let totalDiscount = sum(discounts.map((discount) => discount.value))
 
   return fullAmount - totalDiscount
 }
