@@ -1,10 +1,30 @@
 export const PAYMENT_METHODS = ['CB', 'Carte Titre Restaurant', 'Espèces']
 
 export const MENU_ITEMS = [
-  { section: 'Burgers', name: 'Le Suricate', price: 8 },
-  { section: 'Burgers', name: "L'Original", price: 8 },
-  { section: 'Burgers', name: 'Le Pouli', price: 8 },
-  { section: 'Burgers', name: 'Burger du Moment', price: 8 },
+  {
+    section: 'Burgers',
+    name: 'Le Suricate',
+    price: 8,
+    ingredients: ['Sauce Suricate', 'Haché de boeuf', 'Poitrine de porc', 'Oignons frits', 'Cantal'],
+  },
+  {
+    section: 'Burgers',
+    name: "L'Original",
+    price: 8,
+    ingredients: ['Sauce Suricate', 'Haché de boeuf', 'Poitrine de porc', 'Oignons frits', 'Cantal'],
+  },
+  {
+    section: 'Burgers',
+    name: 'Le Pouli',
+    price: 8,
+    ingredients: ['Sauce Suricate', 'Haché de boeuf', 'Poitrine de porc', 'Oignons frits', 'Cantal'],
+  },
+  {
+    section: 'Burgers',
+    name: 'Burger du Moment',
+    price: 8,
+    ingredients: ['Sauce Suricate', 'Haché de boeuf', 'Poitrine de porc', 'Oignons frits', 'Cantal'],
+  },
   { section: 'Accompagnements', name: 'Frites Maison', price: 3 },
   { section: 'Boissons', name: 'Coca Cola 33 Cl', price: 2 },
   { section: 'Boissons', name: 'Coca Zero 33 Cl', price: 2 },

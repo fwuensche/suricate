@@ -4,7 +4,7 @@ const PaymentMethods = ({ setPaymentMethod }) => {
   return (
     <div className='flex'>
       <div className='w-1/4 flex items-center'>
-        <h2>Moyen de paiement</h2>
+        <h3>Moyen de paiement</h3>
       </div>
       <div className='grid grid-cols-4 gap-4 w-full'>
         {PAYMENT_METHODS.map((method, index) => (
