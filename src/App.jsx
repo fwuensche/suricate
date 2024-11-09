@@ -11,15 +11,15 @@ function App() {
   const [customerName, setCustomerName] = useState('')
 
   return (
-    <div className='flex'>
-      <div className='w-3/4 p-8 print:hidden'>
+    <div className='flex flex-col md:flex-row'>
+      <div className='w-full md:w-3/4 p-8 print:hidden'>
         <Header customerName={customerName} setCustomerName={setCustomerName} />
         <Divider margin />
-        <Menu setOrderItems={setOrderItems} />
+        <Menu setOrderItems={setOrderItems} orderItems={orderItems} />
         <Divider margin />
         <PaymentMethods paymentMethod={paymentMethod} setPaymentMethod={setPaymentMethod} />
       </div>
-      <div className='w-1/4 p-8 print:w-full'>
+      <div className='w-full md:w-1/4 p-8 print:w-full'>
         <Order orderItems={orderItems} paymentMethod={paymentMethod} customerName={customerName} />
       </div>
     </div>

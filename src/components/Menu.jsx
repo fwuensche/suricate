@@ -1,14 +1,14 @@
 import { MENU_ITEMS } from '../config'
-import Section from './Section'
+import MenuSection from './MenuSection'
 import { uniq } from 'lodash-es'
 
 const SECTIONS = uniq(MENU_ITEMS.map((item) => item.section))
 
-const Menu = ({ setOrderItems }) => {
+const Menu = ({ setOrderItems, orderItems }) => {
   return (
     <div className='flex flex-col gap-4'>
       {SECTIONS.map((section, index) => (
-        <Section key={index} section={section} setOrderItems={setOrderItems} />
+        <MenuSection key={index} section={section} setOrderItems={setOrderItems} orderItems={orderItems} />
       ))}
     </div>
   )
