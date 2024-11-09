@@ -20,7 +20,12 @@ function App() {
         <PaymentMethods paymentMethod={paymentMethod} setPaymentMethod={setPaymentMethod} />
       </div>
       <div className='w-full md:w-1/4 p-8 print:w-full'>
-        <Order orderItems={orderItems} paymentMethod={paymentMethod} customerName={customerName} />
+        <Order
+          orderItems={orderItems}
+          paymentMethod={paymentMethod}
+          customerName={customerName}
+          setOrderItems={setOrderItems}
+        />
       </div>
     </div>
   )

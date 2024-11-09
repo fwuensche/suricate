@@ -1,13 +1,13 @@
 import Divider from './Divider'
-import Ingredient from './Ingredient'
+import OrderItem from './OrderItem'
 import { sum } from 'lodash-es'
 
-const Order = ({ orderItems, paymentMethod, customerName }) => {
+const Order = ({ orderItems, setOrderItems, customerName, paymentMethod }) => {
   const totalAmount = sum(orderItems.map((item) => item.price))
 
-  const onPrint = () => {
-    window.print()
-  }
+  const onPrint = () => window.print()
+
+  const removeItem = (index) => setOrderItems((prevItems) => prevItems.filter((_, i) => i !== index))
 
   return (
     <div id='order' className='flex flex-col gap-4'>
@@ -18,18 +18,7 @@ const Order = ({ orderItems, paymentMethod, customerName }) => {
         </h2>
       )}
       {orderItems.map((item, index) => (
-        <ul className='mt-3' key={index}>
-          <li>
-            {item.name} - {item.price} €
-          </li>
-          {item.ingredients && (
-            <>
-              {item.ingredients.map((ingredient, index) => (
-                <Ingredient key={index} ingredient={ingredient} />
-              ))}
-            </>
-          )}
-        </ul>
+        <OrderItem key={index} item={item} index={index} removeItem={removeItem} />
       ))}
       <Divider />
       <h2>Total : {totalAmount} €</h2>
