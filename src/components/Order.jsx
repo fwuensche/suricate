@@ -1,11 +1,11 @@
-import Divider from "./Divider";
-import { sum } from "lodash-es";
+import Divider from './Divider'
+import { sum } from 'lodash-es'
 
 const Order = ({ orderItems, paymentMethod }) => {
-  const totalAmount = sum(orderItems.map((item) => item.price));
+  const totalAmount = sum(orderItems.map((item) => item.price))
 
   return (
-    <div id="order">
+    <div id='order'>
       <h1>Récapitulatif de la commande</h1>
       <ul>
         {orderItems.map((item, index) => (
@@ -18,7 +18,7 @@ const Order = ({ orderItems, paymentMethod }) => {
       <h2>Total : {totalAmount} €</h2>
       {paymentMethod && <h2>Moyen de paiement : {paymentMethod}</h2>}
     </div>
-  );
-};
+  )
+}
 
-export default Order;
+export default Order
