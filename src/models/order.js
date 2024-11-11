@@ -2,27 +2,74 @@ import { FORMULAS } from '../config'
 import { sum } from 'lodash-es'
 
 export const getDiscounts = (orderItems) => {
-  let discounts = []
+  // Expand the order items into individual items
+  let unusedItems = []
+  orderItems.forEach((item) => {
+    unusedItems.push({ ...item }) // Clone the item
+  })
 
-  FORMULAS.forEach((formula) => {
-    // Count how many items in the order match each required section
-    let sectionCounts = formula.item_combination.map((section) => {
-      return orderItems.filter((item) => item.section === section).length
-    })
+  // Cache for memoization
+  const memo = new Map()
 
-    // Determine how many times the formula can be applied
-    let timesApplicable = Math.min(...sectionCounts)
+  // Helper function to create a unique key for memoization
+  const createKey = (items) => {
+    return items
+      .map((item) => item.name + item.section)
+      .sort()
+      .join(',')
+  }
 
-    if (timesApplicable > 0) {
-      // Push the discount into the array as many times as it's applicable
-      for (let i = 0; i < timesApplicable; i++) {
-        discounts.push({
-          name: formula.name,
-          value: formula.discount,
-        })
+  // Recursive function to find the optimal discounts
+  const findOptimalDiscounts = (remainingItems) => {
+    const key = createKey(remainingItems)
+    if (memo.has(key)) {
+      return memo.get(key)
+    }
+
+    let bestDiscounts = []
+    let maxTotalDiscount = 0
+
+    for (let formula of FORMULAS) {
+      // Try to apply the formula to the remaining items
+      let tempItems = [...remainingItems]
+      let usedItems = []
+
+      let canApplyFormula = formula.item_combination.every((section) => {
+        let index = tempItems.findIndex((item) => item.section === section)
+        if (index !== -1) {
+          usedItems.push(tempItems.splice(index, 1)[0])
+          return true
+        }
+        return false
+      })
+
+      if (canApplyFormula) {
+        // Recursively find the best discounts with the remaining items
+        let { discounts: nextDiscounts, totalDiscount: nextTotalDiscount } = findOptimalDiscounts(tempItems)
+
+        let currentDiscounts = [{ name: formula.name, value: formula.discount }, ...nextDiscounts]
+        let currentTotalDiscount = formula.discount + nextTotalDiscount
+
+        // Update the best discounts if current total discount is higher
+        if (currentTotalDiscount > maxTotalDiscount) {
+          bestDiscounts = currentDiscounts
+          maxTotalDiscount = currentTotalDiscount
+        }
       }
     }
-  })
+
+    // Also consider the case where no more formulas can be applied
+    const result = {
+      discounts: bestDiscounts,
+      totalDiscount: maxTotalDiscount,
+    }
+
+    memo.set(key, result)
+    return result
+  }
+
+  // Start the recursion with all unused items
+  const { discounts } = findOptimalDiscounts(unusedItems)
 
   return discounts
 }
