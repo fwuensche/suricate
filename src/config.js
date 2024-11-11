@@ -1,5 +1,3 @@
-import { sum } from 'lodash-es'
-
 export const PAYMENT_METHODS = ['CB', 'Carte Restaurant', 'Espèces']
 
 export const MENU_ITEMS = [
@@ -43,10 +41,15 @@ export const MENU_ITEMS = [
   { section: 'Café', name: 'Café', price: 1.5 },
 ]
 
-export const FORMULES = [
+export const FORMULAS = [
   {
     name: 'Formule Burger + Frites + Boisson',
     discount: 1.5,
-    item_combinations: ['Burgers', 'Accompagnements', 'Boissons'],
+    item_combination: ['Burgers', 'Accompagnements', 'Boissons'],
+  },
+  {
+    name: 'Formule Complète',
+    discount: 2,
+    item_combination: ['Burgers', 'Accompagnements', 'Boissons', 'Desserts'],
   },
 ]
