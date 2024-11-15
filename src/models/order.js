@@ -74,10 +74,15 @@ export const getDiscounts = (orderItems) => {
   return discounts
 }
 
-export const getTotalAmount = (orderItems) => {
-  let fullAmount = sum(orderItems.map((item) => item.price))
-  let discounts = getDiscounts(orderItems)
-  let totalDiscount = sum(discounts.map((discount) => discount.value))
+export const getAmounts = (orderItems) => {
+  const subtotal = sum(orderItems.map((item) => item.price))
+  const discounts = getDiscounts(orderItems)
+  const discount = sum(discounts.map((discount) => discount.value))
+  const total = subtotal - discount
 
-  return fullAmount - totalDiscount
+  return { subtotal, total, discount }
+}
+
+export const formatEuros = (amount) => {
+  return new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR' }).format(amount)
 }

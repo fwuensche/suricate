@@ -1,10 +1,11 @@
 import Discounts from './Discounts'
 import Divider from './Divider'
 import OrderItem from './OrderItem'
-import { getTotalAmount } from '../models/order'
+import OrderLine from './OrderLine'
+import { getAmounts } from '../models/order'
 
 const Order = ({ orderItems, setOrderItems, customerName, paymentMethod }) => {
-  const totalAmount = getTotalAmount(orderItems)
+  const { total } = getAmounts(orderItems)
 
   const onPrint = () => window.print()
 
@@ -23,7 +24,7 @@ const Order = ({ orderItems, setOrderItems, customerName, paymentMethod }) => {
       ))}
       <Divider />
       <Discounts orderItems={orderItems} />
-      <h2>Total : {totalAmount} €</h2>
+      <OrderLine label='Total' value={total} variant='h3' />
       {paymentMethod && <h2>Paiement : {paymentMethod}</h2>}
       <div className='print:hidden'>
         <button onClick={onPrint} className='btn-primary w-full'>

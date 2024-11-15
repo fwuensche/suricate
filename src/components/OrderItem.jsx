@@ -1,4 +1,5 @@
 import Ingredient from './Ingredient'
+import { formatEuros } from '../models/order'
 
 const OrderItem = ({ item, index, removeItem }) => {
   const handleRemoveItem = () => {
@@ -11,7 +12,7 @@ const OrderItem = ({ item, index, removeItem }) => {
     <div className='card'>
       <div className='flex justify-between'>
         <div className='font-bold'>
-          {item.name} - {item.price} €
+          {item.name} - {formatEuros(item.price)}
         </div>
         <button onClick={handleRemoveItem}>Supprimer</button>
       </div>
