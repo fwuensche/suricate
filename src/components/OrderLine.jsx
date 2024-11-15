@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import { formatEuros } from '../models/order'
 
 const OrderLine = ({ label, value, variant }) => {
@@ -7,6 +8,12 @@ const OrderLine = ({ label, value, variant }) => {
       <span>{formatEuros(value)}</span>
     </div>
   )
+}
+
+OrderLine.propTypes = {
+  label: PropTypes.string.isRequired,
+  value: PropTypes.number.isRequired,
+  variant: PropTypes.string,
 }
 
 export default OrderLine

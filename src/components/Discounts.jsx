@@ -1,7 +1,8 @@
-import { formatEuros, getAmounts, getDiscounts } from '../models/order'
+import { getAmounts, getDiscounts } from '../models/order'
 
 import Divider from './Divider'
 import OrderLine from './OrderLine'
+import PropTypes from 'prop-types'
 
 const Discounts = ({ orderItems }) => {
   const discounts = getDiscounts(orderItems)
@@ -24,6 +25,10 @@ const Discounts = ({ orderItems }) => {
       <Divider />
     </>
   )
+}
+
+Discounts.propTypes = {
+  orderItems: PropTypes.array.isRequired,
 }
 
 export default Discounts

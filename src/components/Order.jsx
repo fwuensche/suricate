@@ -2,6 +2,7 @@ import Discounts from './Discounts'
 import Divider from './Divider'
 import OrderItem from './OrderItem'
 import OrderLine from './OrderLine'
+import PropTypes from 'prop-types'
 import { getAmounts } from '../models/order'
 
 const Order = ({ orderItems, setOrderItems, customerName, paymentMethod }) => {
@@ -33,6 +34,13 @@ const Order = ({ orderItems, setOrderItems, customerName, paymentMethod }) => {
       </div>
     </div>
   )
+}
+
+Order.propTypes = {
+  orderItems: PropTypes.array.isRequired,
+  setOrderItems: PropTypes.func.isRequired,
+  customerName: PropTypes.string,
+  paymentMethod: PropTypes.string,
 }
 
 export default Order

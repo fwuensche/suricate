@@ -1,4 +1,5 @@
 import Ingredient from './Ingredient'
+import PropTypes from 'prop-types'
 import { formatEuros } from '../models/order'
 
 const OrderItem = ({ item, index, removeItem }) => {
@@ -20,6 +21,12 @@ const OrderItem = ({ item, index, removeItem }) => {
         item.ingredients.map((ingredient, index) => <Ingredient key={index} ingredient={ingredient} />)}
     </div>
   )
+}
+
+OrderItem.propTypes = {
+  item: PropTypes.object.isRequired,
+  index: PropTypes.number.isRequired,
+  removeItem: PropTypes.func.isRequired,
 }
 
 export default OrderItem
