@@ -4,7 +4,7 @@ import { formatEuros } from '../models/order'
 
 const OrderItem = ({ item, index, removeItem }) => {
   const handleRemoveItem = () => {
-    if (window.confirm(`Êtes-vous sûr de vouloir supprimer cet article : ${item.name} ?`)) {
+    if (window.confirm(`Voulez-vous supprimer ${item.name} ?`)) {
       removeItem(index)
     }
   }
@@ -15,7 +15,7 @@ const OrderItem = ({ item, index, removeItem }) => {
         <div className='font-bold'>
           {item.name} - {formatEuros(item.price)}
         </div>
-        <button onClick={handleRemoveItem}>Supprimer</button>
+        <button onClick={handleRemoveItem}>✕</button>
       </div>
       {item.ingredients &&
         item.ingredients.map((ingredient, index) => <Ingredient key={index} ingredient={ingredient} />)}

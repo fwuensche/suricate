@@ -43,12 +43,12 @@ export const MENU_ITEMS = [
 
 export const FORMULAS = [
   {
-    name: 'Formule Burger + Frites + Boisson',
+    name: 'Formule Bg + Fr + Bs',
     discount: 1.5,
     item_combination: ['Burgers', 'Accompagnements', 'Boissons'],
   },
   {
-    name: 'Formule Complète',
+    name: 'Formule Bg + Fr + Bs + Ds',
     discount: 2,
     item_combination: ['Burgers', 'Accompagnements', 'Boissons', 'Desserts'],
   },
