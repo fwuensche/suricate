@@ -2,7 +2,7 @@ import Ingredient from './Ingredient'
 import PropTypes from 'prop-types'
 import { formatEuros } from '../models/order'
 
-const OrderItem = ({ item, index, removeItem }) => {
+const OrderItem = ({ item, index, removeItem, inFormula }) => {
   const handleRemoveItem = () => {
     if (window.confirm(`Voulez-vous supprimer ${item.name} ?`)) {
       removeItem(index)
@@ -10,7 +10,7 @@ const OrderItem = ({ item, index, removeItem }) => {
   }
 
   return (
-    <div className='card'>
+    <div className={`card ${inFormula ? 'border-2 border-blue-500' : ''}`}>
       <div className='flex justify-between'>
         <div className='font-bold'>
           {item.name} - {formatEuros(item.price)}
@@ -27,6 +27,7 @@ OrderItem.propTypes = {
   item: PropTypes.object.isRequired,
   index: PropTypes.number.isRequired,
   removeItem: PropTypes.func.isRequired,
+  inFormula: PropTypes.bool.isRequired,
 }
 
 export default OrderItem

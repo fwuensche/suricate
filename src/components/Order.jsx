@@ -1,4 +1,3 @@
-import Discounts from './Discounts'
 import Divider from './Divider'
 import OrderItem from './OrderItem'
 import OrderLine from './OrderLine'
@@ -6,7 +5,9 @@ import PropTypes from 'prop-types'
 import { getAmounts } from '../models/order'
 
 const Order = ({ orderItems, setOrderItems, customerName, paymentMethod }) => {
-  const { total } = getAmounts(orderItems)
+  const { subtotal, total, formulas } = getAmounts(orderItems)
+
+  console.log('Formulas applied:', formulas)
 
   const onPrint = () => window.print()
 
@@ -21,10 +22,16 @@ const Order = ({ orderItems, setOrderItems, customerName, paymentMethod }) => {
         </h2>
       )}
       {orderItems.map((item, index) => (
-        <OrderItem key={index} item={item} index={index} removeItem={removeItem} />
+        <OrderItem
+          key={index}
+          item={item}
+          index={index}
+          removeItem={removeItem}
+          inFormula={formulas.some((f) => f.items.includes(item))}
+        />
       ))}
       <Divider />
-      <Discounts orderItems={orderItems} />
+      <OrderLine label='Sous-total' value={subtotal} variant='h3' />
       <OrderLine label='Total' value={total} variant='h3' />
       {paymentMethod && <h2>Paiement : {paymentMethod}</h2>}
       <div className='print:hidden'>

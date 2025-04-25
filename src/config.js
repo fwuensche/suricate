@@ -62,6 +62,6 @@ export const FORMULAS = [
   {
     name: 'Formule : Burger – Frites – Boisson',
     price: 13,
-    item_combination: ['Burgers', 'Accompagnements', 'Boissons'],
+    sections: ['Burgers', 'Accompagnements', 'Boissons'],
   },
 ]

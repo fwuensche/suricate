@@ -1,10 +1,14 @@
+import PropTypes from 'prop-types'
 import { MENU_ITEMS } from '../config'
 import MenuItem from './MenuItem'
 
 const MenuSection = ({ section, setOrderItems, orderItems }) => {
   const menuItems = MENU_ITEMS.filter((item) => item.section === section)
 
-  const addToOrder = (item) => setOrderItems((order) => [...order, item])
+  const addToOrder = (item) => {
+    const newItem = { ...item, id: `${item.name}-${Date.now()}` }
+    setOrderItems((order) => [...order, newItem])
+  }
 
   return (
     <div className='flex flex-col lg:flex-row'>
@@ -19,6 +23,19 @@ const MenuSection = ({ section, setOrderItems, orderItems }) => {
       </div>
     </div>
   )
+}
+
+MenuSection.propTypes = {
+  section: PropTypes.string.isRequired,
+  setOrderItems: PropTypes.func.isRequired,
+  orderItems: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+      section: PropTypes.string.isRequired,
+      price: PropTypes.number.isRequired,
+    })
+  ).isRequired,
 }
 
 export default MenuSection

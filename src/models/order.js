@@ -1,88 +1,67 @@
 import { FORMULAS } from '../config'
-import { sum } from 'lodash-es'
+import { sum, sortBy } from 'lodash-es'
 
-export const getDiscounts = (orderItems) => {
-  // Expand the order items into individual items
-  let unusedItems = []
-  orderItems.forEach((item) => {
-    unusedItems.push({ ...item }) // Clone the item
-  })
+/**
+ * Returns the lowest total plus the formulas used.
+ * @param {Array<{id:string,name:string,section:string,price:number}>} orderItems
+ */
+function getBestPossiblePrice(orderItems = []) {
+  let remainingItems = [...orderItems]
+  const applied = []
 
-  // Cache for memoization
-  const memo = new Map()
+  // Keep applying formulas as long as possible
+  while (true) {
+    let bestFormula = null
+    let bestPicks = null
+    let bestSavings = 0
 
-  // Helper function to create a unique key for memoization
-  const createKey = (items) => {
-    return items
-      .map((item) => item.name + item.section)
-      .sort()
-      .join(',')
-  }
+    // Iterate over all formulas to find the best one to apply
+    for (const f of FORMULAS) {
+      const picks = f.sections.map(
+        (sec) =>
+          sortBy(
+            remainingItems.filter((i) => i.section === sec),
+            'price'
+          )[0]
+      )
 
-  // Recursive function to find the optimal discounts
-  const findOptimalDiscounts = (remainingItems) => {
-    const key = createKey(remainingItems)
-    if (memo.has(key)) {
-      return memo.get(key)
-    }
+      // Skip if any section is missing
+      if (picks.some((p) => !p)) continue
 
-    let bestDiscounts = []
-    let maxTotalDiscount = 0
+      const fullPrice = sum(picks.map((p) => p.price))
+      const savings = fullPrice - f.price
 
-    for (let formula of FORMULAS) {
-      // Try to apply the formula to the remaining items
-      let tempItems = [...remainingItems]
-      let usedItems = []
-
-      let canApplyFormula = formula.item_combination.every((section) => {
-        let index = tempItems.findIndex((item) => item.section === section)
-        if (index !== -1) {
-          usedItems.push(tempItems.splice(index, 1)[0])
-          return true
-        }
-        return false
-      })
-
-      if (canApplyFormula) {
-        // Recursively find the best discounts with the remaining items
-        let { discounts: nextDiscounts, totalDiscount: nextTotalDiscount } = findOptimalDiscounts(tempItems)
-
-        let currentDiscounts = [{ name: formula.name, value: formula.discount }, ...nextDiscounts]
-        let currentTotalDiscount = formula.discount + nextTotalDiscount
-
-        // Update the best discounts if current total discount is higher
-        if (currentTotalDiscount > maxTotalDiscount) {
-          bestDiscounts = currentDiscounts
-          maxTotalDiscount = currentTotalDiscount
-        }
+      if (savings > bestSavings) {
+        bestSavings = savings
+        bestFormula = f
+        bestPicks = picks
       }
     }
 
-    // Also consider the case where no more formulas can be applied
-    const result = {
-      discounts: bestDiscounts,
-      totalDiscount: maxTotalDiscount,
-    }
+    // If no formula can be applied, break the loop
+    if (!bestFormula) break
 
-    memo.set(key, result)
-    return result
+    // Apply the best formula found
+    applied.push({ name: bestFormula.name, items: bestPicks })
+    remainingItems = remainingItems.filter((i) => !bestPicks.includes(i))
   }
 
-  // Start the recursion with all unused items
-  const { discounts } = findOptimalDiscounts(unusedItems)
+  const bestPrice =
+    sum(applied.map((a) => FORMULAS.find((f) => f.name === a.name).price)) + sum(remainingItems.map((i) => i.price))
 
-  return discounts
+  return { bestPrice, formulas: applied }
 }
 
-export const getAmounts = (orderItems) => {
-  const subtotal = sum(orderItems.map((item) => item.price))
-  const discounts = getDiscounts(orderItems)
-  const discount = sum(discounts.map((discount) => discount.value))
-  const total = subtotal - discount
-
-  return { subtotal, total, discount }
+export function getAmounts(orderItems) {
+  const subtotal = sum(orderItems.map((i) => i.price))
+  const { bestPrice, formulas } = getBestPossiblePrice(orderItems)
+  const total = Math.min(bestPrice, subtotal)
+  return { subtotal, total, formulas }
 }
 
-export const formatEuros = (amount) => {
-  return new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR' }).format(amount)
+export function formatEuros(amount) {
+  return new Intl.NumberFormat('fr-FR', {
+    style: 'currency',
+    currency: 'EUR',
+  }).format(amount)
 }
