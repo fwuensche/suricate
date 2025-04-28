@@ -3,11 +3,7 @@ import PropTypes from 'prop-types'
 import { formatEuros } from '../models/order'
 
 const OrderItem = ({ item, index, removeItem, inFormula }) => {
-  const handleRemoveItem = () => {
-    if (window.confirm(`Voulez-vous supprimer ${item.name} ?`)) {
-      removeItem(index)
-    }
-  }
+  const handleRemoveItem = () => removeItem(index)
 
   return (
     <div className={`card ${inFormula ? 'border-2 border-blue-500' : ''}`}>
