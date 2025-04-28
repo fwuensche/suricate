@@ -1,4 +1,4 @@
-export const PAYMENT_METHODS = ['CB', 'Carte Restaurant', 'Espèces', 'Visa', 'Mastercard']
+export const PAYMENT_METHODS = ['CB', 'Carte Restaurant', 'Espèces']
 
 export const MENU_ITEMS = [
   {
