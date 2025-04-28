@@ -17,21 +17,18 @@ function getBestPossiblePrice(orderItems = []) {
 
     // Iterate over all formulas to find the best one to apply
     for (const f of FORMULAS) {
-      const picks = f.sections.map(
-        (sec) =>
-          sortBy(
-            remainingItems.filter((i) => i.section === sec),
-            'price'
-          )[0]
-      )
+      const picks = f.sections.map((section) => {
+        const sectionItems = remainingItems.filter((item) => item.section === section)
+        return sortBy(sectionItems, 'price').reverse()[0]
+      })
 
       // Skip if any section is missing
-      if (picks.some((p) => !p)) continue
+      if (picks.some((pick) => !pick)) continue
 
-      const fullPrice = sum(picks.map((p) => p.price))
+      const fullPrice = sum(picks.map((pick) => pick.price))
       const savings = fullPrice - f.price
 
-      if (savings > bestSavings) {
+      if (savings >= bestSavings) {
         bestSavings = savings
         bestFormula = f
         bestPicks = picks
