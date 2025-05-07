@@ -1,13 +1,71 @@
-import Divider from './Divider'
+import { formatEuros, getAmounts } from '../models/order'
+
 import OrderItem from './OrderItem'
 import OrderLine from './OrderLine'
 import PropTypes from 'prop-types'
-import { getAmounts } from '../models/order'
+
+const WIDTH = 48
 
 const Order = ({ orderItems, setOrderItems, customerName, paymentMethod }) => {
   const { subtotal, total, formulas } = getAmounts(orderItems)
 
-  const onPrint = () => window.print()
+  const onPrint = () => {
+    // Check if we're on Android
+    const isAndroid = /android/i.test(navigator.userAgent)
+
+    if (isAndroid) {
+      // Format the order content
+      let content = ''
+      content += '-'.repeat(WIDTH) + '\n'
+      content += 'SURICATE\n'
+      content += 'Ticket de vente\n\n'
+
+      if (customerName) content += `${customerName.toUpperCase()}\n\n`
+
+      // Add order items
+      orderItems.forEach((item) => {
+        // Calculate spaces needed for right alignment (40 columns - item name length - price length)
+        const priceStr = formatEuros(item.price)
+        const spaces = ' '.repeat(WIDTH - item.name.length - priceStr.length)
+        content += `${item.name}${spaces}${priceStr}\n`
+
+        if (item.ingredients) {
+          item.ingredients.forEach((ingredient) => {
+            content += `  - ${ingredient}\n`
+          })
+        }
+        content += '\n'
+      })
+
+      // Add separator line
+      content += '-'.repeat(WIDTH) + '\n'
+
+      // Format totals with right alignment
+      const subtotalStr = formatEuros(subtotal)
+      const totalStr = formatEuros(total)
+      content += `\nSous-total${' '.repeat(WIDTH - 'Sous-total'.length - subtotalStr.length)}${subtotalStr}\n`
+      content += `Total${' '.repeat(WIDTH - 'Total'.length - totalStr.length)}${totalStr}\n`
+
+      if (paymentMethod) content += `\nPaiement: ${paymentMethod}\n`
+
+      // Encode the content for URL
+      const encodedContent = encodeURIComponent(content)
+
+      // Create RawBT intent URL
+      const rawbtUrl = `intent:${encodedContent}#Intent;scheme=rawbt;package=ru.a402d.rawbtprinter;end`
+
+      // Try to open RawBT
+      const rawbtWindow = window.open(rawbtUrl, '_blank')
+
+      // If the window was blocked or RawBT is not installed, fall back to regular print
+      if (!rawbtWindow || rawbtWindow.closed || typeof rawbtWindow.closed === 'undefined') {
+        window.print()
+      }
+    } else {
+      // Not on Android, use regular print
+      window.print()
+    }
+  }
 
   const removeItem = (index) => setOrderItems((prevItems) => prevItems.filter((_, i) => i !== index))
 
