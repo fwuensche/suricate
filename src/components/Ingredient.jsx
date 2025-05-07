@@ -3,7 +3,8 @@ import { useState } from 'react'
 const Ingredient = ({ ingredient }) => {
   const [isChecked, setIsChecked] = useState(true)
 
-  const handleCheckboxChange = () => {
+  const handleCheckboxChange = (e) => {
+    e.stopPropagation()
     setIsChecked(!isChecked)
   }
 

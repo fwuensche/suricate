@@ -6,7 +6,6 @@ export const MENU_ITEMS = [
     name: "L'Original",
     price: 9.5,
     ingredients: [
-      'Pain Maison',
       'Sauce Burger',
       'Haché de Bœuf façon bouchère',
       'Bacon fumé',
@@ -20,7 +19,6 @@ export const MENU_ITEMS = [
     name: 'Le Suricate',
     price: 9.5,
     ingredients: [
-      'Pain Maison',
       'Sauce Mayo-Ail & Persil',
       'Haché de Bœuf façon bouchère',
       'Poitrine de Porc fumée',
@@ -32,14 +30,13 @@ export const MENU_ITEMS = [
     section: 'Burgers',
     name: 'Le Suprême poulet',
     price: 9.5,
-    ingredients: ['Pain Maison', 'Sauce Mayo-Curry', 'Filet de poulet croustillant', 'Oignons confits', 'Cheddar AOP'],
+    ingredients: ['Sauce Mayo-Curry', 'Filet de poulet croustillant', 'Oignons confits', 'Cheddar AOP'],
   },
   {
     section: 'Burgers',
     name: 'Le Burger du Moment',
     price: 9.5,
     ingredients: [
-      'Pain Maison',
       'Sauce Mayo-Miel',
       'Haché de Bœuf façon bouchère',
       'Tomates séchées confites',
@@ -48,13 +45,15 @@ export const MENU_ITEMS = [
     ],
   },
   { section: 'Accompagnements', name: 'Frites Fraîches', price: 3.5 },
-  { section: 'Desserts', name: 'Dessert du jour "Maison" (Entremet à la Poires)', price: 3.5 },
   { section: 'Boissons', name: 'Eau minérale 50 CL', price: 1.5 },
   { section: 'Boissons', name: 'Eau Perrier 33 CL', price: 1.5 },
   { section: 'Boissons', name: 'Coca Cola 33 CL', price: 2 },
   { section: 'Boissons', name: 'Coca Zéro 33 CL', price: 2 },
   { section: 'Boissons', name: 'Ice tea 33 CL saveur pêche', price: 2 },
-  { section: 'Boissons', name: 'Jus de fruits 33 CL (Pomme – Poire – Fruits rouges)', price: 2 },
+  { section: 'Boissons', name: 'Jus de fruits 33 CL Pomme', price: 2 },
+  { section: 'Boissons', name: 'Jus de fruits 33 CL Poire', price: 2 },
+  { section: 'Boissons', name: 'Jus de fruits 33 CL Fruits rouges', price: 2 },
+  { section: 'Desserts', name: 'Dessert du jour', price: 3.5 },
   { section: 'Café', name: 'Café en grain', price: 1.5 },
 ]
 
