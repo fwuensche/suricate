@@ -3,13 +3,14 @@ import PropTypes from 'prop-types'
 import { formatEuros } from '../models/order'
 
 const OrderItem = ({ item, index, removeItem, inFormula }) => {
-  const handleRemoveItem = (e) => {
-    removeItem(index)
-  }
+  const handleRemoveItem = () => removeItem(index)
 
   return (
     <div>
-      <div className={`card cursor-pointer ${inFormula ? 'border-2 border-blue-500' : ''}`} onClick={handleRemoveItem}>
+      <div
+        className={`card print:p-0 cursor-pointer print:border-none ${inFormula ? 'border-2 border-blue-500' : ''}`}
+        onClick={handleRemoveItem}
+      >
         <div className='flex justify-between'>
           <span>{item.name}</span>
           <span>{formatEuros(item.price)}</span>

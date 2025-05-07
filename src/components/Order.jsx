@@ -13,11 +13,14 @@ const Order = ({ orderItems, setOrderItems, customerName, paymentMethod }) => {
 
   return (
     <div id='order' className='flex flex-col gap-2 text-sm'>
-      <div className='uppercase'>Commande</div>
+      <div className='flex justify-between'>
+        <span>Ticket de vente</span>
+        <span className='uppercase'>Suricate</span>
+      </div>
       {customerName && (
-        <h2>
+        <div>
           Client: <span className='uppercase'>{customerName}</span>
-        </h2>
+        </div>
       )}
       {orderItems.map((item, index) => (
         <OrderItem
@@ -28,10 +31,15 @@ const Order = ({ orderItems, setOrderItems, customerName, paymentMethod }) => {
           inFormula={formulas.some((f) => f.items.includes(item))}
         />
       ))}
-      <Divider />
+      <hr />
       <OrderLine label='Sous-total' value={subtotal} />
       <OrderLine label='Total' value={total} />
-      {paymentMethod && <h2>Paiement : {paymentMethod}</h2>}
+      {paymentMethod && (
+        <>
+          <hr />
+          Paiement : {paymentMethod}
+        </>
+      )}
       <div className='print:hidden'>
         <button onClick={onPrint} className='btn-primary w-full'>
           <svg
