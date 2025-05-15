@@ -58,8 +58,8 @@ export const MENU_ITEMS = [
   { section: 'Boissons', name: 'Coca Zéro 33 CL', price: 2 },
   { section: 'Boissons', name: 'Ice tea 33 CL', price: 2 },
   { section: 'Boissons', name: 'Jus de fruits 33 CL', price: 2 },
-  { section: 'Café', name: 'Café en grain', price: 1.5 },
   { section: 'Desserts', name: 'Dessert du jour', price: 3.5 },
+  { section: 'Café', name: 'Café en grain', price: 1.5 },
 ]
 
 export const FORMULAS = [
