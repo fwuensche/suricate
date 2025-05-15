@@ -15,17 +15,9 @@ const Ingredient = ({ ingredient, orderItems, setOrderItems }) => {
         if (item.ingredients && item.ingredients.includes(ingredient)) {
           // Update the ingredients array
           const newIngredients = item.ingredients.map((i) =>
-            i.name === ingredient.name
-              ? {
-                  name: ingredient.name,
-                  checked: newIsChecked,
-                }
-              : i
+            i.name === ingredient.name ? { name: ingredient.name, checked: newIsChecked } : i
           )
-          return {
-            ...item,
-            ingredients: newIngredients,
-          }
+          return { ...item, ingredients: newIngredients }
         }
         return item
       })

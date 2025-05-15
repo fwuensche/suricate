@@ -33,6 +33,7 @@ const Order = ({ orderItems, setOrderItems, customerName, paymentMethod }) => {
           item.ingredients.forEach((ingredient) => {
             content += `  [${ingredient.checked ? 'X' : ' '}] ${ingredient.name}\n`
           })
+          content += '\n'
         }
         content += '\n'
       })
