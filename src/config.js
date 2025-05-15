@@ -4,7 +4,7 @@ export const MENU_ITEMS = [
   {
     section: 'Burgers',
     name: "L'Original",
-    price: 9.5,
+    price: 10.5,
     ingredients: [
       { name: 'Sauce Burger', checked: true },
       { name: 'Haché de Boeuf', checked: true },
@@ -17,7 +17,7 @@ export const MENU_ITEMS = [
   {
     section: 'Burgers',
     name: 'Le Suricate',
-    price: 9.5,
+    price: 10.5,
     ingredients: [
       { name: 'Sauce Mayo-Ail', checked: true },
       { name: 'Haché de Boeuf', checked: true },
@@ -29,7 +29,7 @@ export const MENU_ITEMS = [
   {
     section: 'Burgers',
     name: 'Le Suprême poulet',
-    price: 9.5,
+    price: 10.5,
     ingredients: [
       { name: 'Pain Maison', checked: true },
       { name: 'Sauce Mayo-Curry', checked: true },
@@ -41,7 +41,7 @@ export const MENU_ITEMS = [
   {
     section: 'Burgers',
     name: 'Le Burger du Moment',
-    price: 9.5,
+    price: 10.5,
     ingredients: [
       { name: 'Pain Maison', checked: true },
       { name: 'Sauce Mayo-Miel', checked: true },
@@ -66,7 +66,7 @@ export const MENU_ITEMS = [
 export const FORMULAS = [
   {
     name: 'Formule : Burger – Frites – Boisson',
-    price: 13,
+    price: 14,
     sections: ['Burgers', 'Accompagnements', 'Boissons'],
   },
 ]
