@@ -49,6 +49,7 @@ export const MENU_ITEMS = [
       { name: 'Tomates confites', checked: true },
       { name: 'Oignons confits', checked: true },
       { name: 'Fromage de chèvre', checked: true },
+      { name: 'Salade Roquette', checked: true },
     ],
   },
   { section: 'Accompagnements', name: 'Frites Fraîches', price: 3.5 },
