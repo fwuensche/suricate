@@ -7,9 +7,9 @@ export const MENU_ITEMS = [
     price: 9.5,
     ingredients: [
       { name: 'Sauce Burger', checked: true },
-      { name: 'Haché de Bœuf façon bouchère', checked: true },
+      { name: 'Haché de Boeuf', checked: true },
       { name: 'Bacon fumé', checked: true },
-      { name: 'Tomates séchées confites', checked: true },
+      { name: 'Tomates confites', checked: true },
       { name: 'Cheddar AOP', checked: true },
       { name: 'Ciboulette', checked: true },
     ],
@@ -19,9 +19,9 @@ export const MENU_ITEMS = [
     name: 'Le Suricate',
     price: 9.5,
     ingredients: [
-      { name: 'Sauce Mayo-Ail & Persil', checked: true },
-      { name: 'Haché de Bœuf façon bouchère', checked: true },
-      { name: 'Poitrine de Porc fumée', checked: true },
+      { name: 'Sauce Mayo-Ail', checked: true },
+      { name: 'Haché de Boeuf', checked: true },
+      { name: 'Poitrine de Porc', checked: true },
       { name: 'Oignons confits', checked: true },
       { name: 'Cantal jeune AOP', checked: true },
     ],
@@ -31,8 +31,9 @@ export const MENU_ITEMS = [
     name: 'Le Suprême poulet',
     price: 9.5,
     ingredients: [
+      { name: 'Pain Maison', checked: true },
       { name: 'Sauce Mayo-Curry', checked: true },
-      { name: 'Filet de poulet croustillant', checked: true },
+      { name: 'Filet de poulet', checked: true },
       { name: 'Oignons confits', checked: true },
       { name: 'Cheddar AOP', checked: true },
     ],
@@ -42,9 +43,10 @@ export const MENU_ITEMS = [
     name: 'Le Burger du Moment',
     price: 9.5,
     ingredients: [
+      { name: 'Pain Maison', checked: true },
       { name: 'Sauce Mayo-Miel', checked: true },
-      { name: 'Haché de Bœuf façon bouchère', checked: true },
-      { name: 'Tomates séchées confites', checked: true },
+      { name: 'Haché de Boeuf', checked: true },
+      { name: 'Tomates confites', checked: true },
       { name: 'Oignons confits', checked: true },
       { name: 'Fromage de chèvre', checked: true },
     ],
@@ -55,11 +57,9 @@ export const MENU_ITEMS = [
   { section: 'Boissons', name: 'Coca Cola 33 CL', price: 2 },
   { section: 'Boissons', name: 'Coca Zéro 33 CL', price: 2 },
   { section: 'Boissons', name: 'Ice tea 33 CL saveur pêche', price: 2 },
-  { section: 'Boissons', name: 'Jus de fruits 33 CL Pomme', price: 2 },
-  { section: 'Boissons', name: 'Jus de fruits 33 CL Poire', price: 2 },
-  { section: 'Boissons', name: 'Jus de fruits 33 CL Fruits rouges', price: 2 },
-  { section: 'Desserts', name: 'Dessert du jour', price: 3.5 },
+  { section: 'Boissons', name: 'Jus de fruits 33 CL', price: 2 },
   { section: 'Café', name: 'Café en grain', price: 1.5 },
+  { section: 'Desserts', name: 'Dessert du jour', price: 3.5 },
 ]
 
 export const FORMULAS = [
