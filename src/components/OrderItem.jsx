@@ -2,7 +2,7 @@ import Ingredient from './Ingredient'
 import PropTypes from 'prop-types'
 import { formatEuros } from '../models/order'
 
-const OrderItem = ({ item, index, removeItem, inFormula }) => {
+const OrderItem = ({ item, index, removeItem, inFormula, orderItems, setOrderItems }) => {
   const handleRemoveItem = () => removeItem(index)
 
   return (
@@ -17,7 +17,9 @@ const OrderItem = ({ item, index, removeItem, inFormula }) => {
         </div>
       </div>
       {item.ingredients &&
-        item.ingredients.map((ingredient, index) => <Ingredient key={index} ingredient={ingredient} />)}
+        item.ingredients.map((ingredient, index) => (
+          <Ingredient key={index} ingredient={ingredient} orderItems={orderItems} setOrderItems={setOrderItems} />
+        ))}
     </div>
   )
 }
@@ -27,6 +29,8 @@ OrderItem.propTypes = {
   index: PropTypes.number.isRequired,
   removeItem: PropTypes.func.isRequired,
   inFormula: PropTypes.bool.isRequired,
+  orderItems: PropTypes.array.isRequired,
+  setOrderItems: PropTypes.func.isRequired,
 }
 
 export default OrderItem

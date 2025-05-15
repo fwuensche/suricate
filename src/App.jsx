@@ -13,7 +13,7 @@ function App() {
   return (
     <div className='flex flex-col lg:flex-row'>
       <div className='w-full lg:w-3/4 p-8 print:hidden'>
-        <Header customerName={customerName} setCustomerName={setCustomerName} />
+        <Header setCustomerName={setCustomerName} />
         <Divider margin />
         <Menu setOrderItems={setOrderItems} orderItems={orderItems} />
         <Divider margin />
