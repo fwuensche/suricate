@@ -17,7 +17,8 @@ const Order = ({ orderItems, setOrderItems, customerName, paymentMethod }) => {
     let content = ''
     content += '-'.repeat(WIDTH) + '\n'
     content += 'SURICATE\n'
-    content += 'Ticket de vente\n\n'
+    content += 'Ticket de vente\n'
+    content += new Date().toLocaleString('fr-FR', { dateStyle: 'short', timeStyle: 'short' }) + '\n\n'
 
     if (customerName) content += `${customerName.toUpperCase()}\n\n`
 
