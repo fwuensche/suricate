@@ -62,8 +62,36 @@ const Order = ({ orderItems, setOrderItems, customerName, paymentMethod }) => {
       // If the window was blocked or RawBT is not installed, fall back to regular print
       if (!rawbtWindow || rawbtWindow.closed || typeof rawbtWindow.closed === 'undefined') window.print()
     } else {
-      // Not on Android, use regular print
-      alert(content)
+      // Not on Android, show preview in a new tab
+      const previewWindow = window.open('', '_blank')
+      previewWindow.document.write(`
+        <html>
+          <head>
+            <title>Print Preview</title>
+            <style>
+              body {
+                font-family: 'Courier New', monospace;
+                white-space: pre-wrap;
+                padding: 20px;
+                background: #f0f0f0;
+                font-size: 14px;
+                line-height: 1.4;
+              }
+              .preview {
+                background: white;
+                padding: 20px;
+                width: fit-content;
+                margin: 0 auto;
+                box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+              }
+            </style>
+          </head>
+          <body>
+            <div class="preview">${content.replace(/\n/g, '<br>')}</div>
+          </body>
+        </html>
+      `)
+      previewWindow.document.close()
     }
   }
 
