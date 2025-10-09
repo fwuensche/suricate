@@ -1,4 +1,4 @@
-export const PAYMENT_METHODS = ['CB', 'Carte Restaurant', 'Espèces']
+export const PAYMENT_METHODS = ['CB', 'TR', 'Espèces']
 
 export const MENU_ITEMS = [
   {
@@ -52,15 +52,15 @@ export const MENU_ITEMS = [
       { name: 'Salade Roquette', checked: true },
     ],
   },
-  { section: 'Accompagnements', name: 'Frites Fraîches', price: 3.5 },
-  { section: 'Boissons', name: 'Eau minérale 50 CL', price: 1.5 },
-  { section: 'Boissons', name: 'Eau Perrier 33 CL', price: 1.5 },
-  { section: 'Boissons', name: 'Coca Cola 33 CL', price: 2 },
-  { section: 'Boissons', name: 'Coca Zéro 33 CL', price: 2 },
-  { section: 'Boissons', name: 'Ice tea 33 CL', price: 2 },
-  { section: 'Boissons', name: 'Jus de fruits 33 CL', price: 2 },
-  { section: 'Desserts', name: 'Dessert du jour', price: 3.5 },
-  { section: 'Café', name: 'Café en grain', price: 1.5 },
+  { section: 'Accompagnements', name: 'Frites', price: 3.5 },
+  { section: 'Boissons', name: 'Eau', price: 1.5 },
+  { section: 'Boissons', name: 'Perrier', price: 1.5 },
+  { section: 'Boissons', name: 'Coca Cola', price: 2 },
+  { section: 'Boissons', name: 'Coca Zéro', price: 2 },
+  { section: 'Boissons', name: 'Oasis', price: 2 },
+  { section: 'Boissons', name: 'Jus de fruits', price: 2 },
+  { section: 'Desserts', name: 'Dessert', price: 3.5 },
+  { section: 'Café', name: 'Café', price: 1.5 },
 ]
 
 export const FORMULAS = [
