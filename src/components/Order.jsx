@@ -13,20 +13,33 @@ const Order = ({ orderItems, setOrderItems, customerName, paymentMethod }) => {
     // Check if we're on Android
     const isAndroid = /android/i.test(navigator.userAgent)
 
+    // ESC/POS commands for font formatting
+    const ESC = '\x1B'
+    const DOUBLE_SIZE = ESC + '!' + '\x30' // Double width and height
+    const CENTER = ESC + 'a' + '\x01' // Center alignment
+    const LEFT = ESC + 'a' + '\x00' // Left alignment
+
     // Format the order content
     let content = ''
-    content += '-'.repeat(WIDTH) + '\n'
+
+    // Add ESC/POS formatting for Android/RawBT - everything in double size
+    content += DOUBLE_SIZE
+    content += CENTER
     content += 'SURICATE\n'
     content += 'Ticket de vente\n'
+    content += LEFT
     content += new Date().toLocaleString('fr-FR', { dateStyle: 'short', timeStyle: 'short' }) + '\n\n'
 
-    if (customerName) content += `${customerName.toUpperCase()}\n\n`
+    if (customerName) {
+      content += `${customerName.toUpperCase()}\n\n`
+    }
 
     // Add order items
     orderItems.forEach((item) => {
-      // Calculate spaces needed for right alignment (40 columns - item name length - price length)
       const priceStr = formatEuros(item.price)
-      const spaces = ' '.repeat(WIDTH - item.name.length - priceStr.length)
+
+      // For double-width text, WIDTH is halved
+      const spaces = ' '.repeat(WIDTH / 2 - item.name.length - priceStr.length)
       content += `${item.name}${spaces}${priceStr}\n`
 
       if (item.ingredients) {
@@ -39,15 +52,19 @@ const Order = ({ orderItems, setOrderItems, customerName, paymentMethod }) => {
     })
 
     // Add separator line
-    content += '-'.repeat(WIDTH) + '\n'
+    content += '-'.repeat(WIDTH / 2) + '\n'
 
     // Format totals with right alignment
     const subtotalStr = formatEuros(subtotal)
     const totalStr = formatEuros(total)
-    content += `\nSous-total${' '.repeat(WIDTH - 'Sous-total'.length - subtotalStr.length)}${subtotalStr}\n`
-    content += `Total${' '.repeat(WIDTH - 'Total'.length - totalStr.length)}${totalStr}\n`
+
+    // For double-width text, WIDTH is halved
+    content += `\nSous-total${' '.repeat(WIDTH / 2 - 'Sous-total'.length - subtotalStr.length)}${subtotalStr}\n`
+    content += `Total${' '.repeat(WIDTH / 2 - 'Total'.length - totalStr.length)}${totalStr}\n`
 
     if (paymentMethod) content += `\nPaiement: ${paymentMethod}\n`
+
+    content += '\nSIRET: 803 304 237 00024'
 
     if (isAndroid) {
       // Encode the content for URL
