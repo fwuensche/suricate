@@ -40,7 +40,7 @@ export const MENU_ITEMS = [
   },
   {
     section: 'Burgers',
-    name: 'Le Burger du Moment',
+    name: 'Burger du Moment',
     price: 10.5,
     ingredients: [
       { name: 'Pain Maison', checked: true },
