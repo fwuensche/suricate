@@ -1,5 +1,5 @@
 export const PAYMENT_METHODS = ['CB', 'TR', 'Espèces']
-export const MAX_CHARS = 17
+export const MAX_CHARS = 16
 
 export const MENU_ITEMS = [
   {
@@ -17,7 +17,7 @@ export const MENU_ITEMS = [
   },
   {
     section: 'Burgers',
-    name: 'Le Suprême poulet',
+    name: 'Suprême poulet',
     price: 10.5,
     ingredients: [
       { name: 'Sauce Suricate', checked: true },
