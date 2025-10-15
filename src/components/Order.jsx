@@ -39,7 +39,8 @@ const Order = ({ orderItems, setOrderItems, customerName, paymentMethod }) => {
       const priceStr = formatEuros(item.price)
 
       // For double-width text, WIDTH is halved
-      const spaces = ' '.repeat(WIDTH / 2 - item.name.length - priceStr.length)
+      const spaceCount = Math.max(WIDTH / 2 - item.name.length - priceStr.length, 0)
+      const spaces = ' '.repeat(spaceCount)
       content += `${item.name}${spaces}${priceStr}\n`
 
       if (item.ingredients) {
