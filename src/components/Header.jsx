@@ -1,6 +1,8 @@
 import Logo from '../assets/suricate.png'
 import PropTypes from 'prop-types'
 
+const OFFLINE_BUILD_URL = 'https://raw.githubusercontent.com/fwuensche/suricate/main/dist/index.html'
+
 const Header = ({ setCustomerName }) => {
   const handleAddCustomer = () => {
     const name = prompt('Enter customer name:')
@@ -8,6 +10,26 @@ const Header = ({ setCustomerName }) => {
   }
 
   const reloadPage = () => window.location.reload()
+
+  const handleDownloadOffline = async () => {
+    try {
+      const response = await fetch(OFFLINE_BUILD_URL, { cache: 'no-store' })
+      if (!response.ok) throw new Error(`Failed to fetch offline build: ${response.status}`)
+
+      const blob = await response.blob()
+      const url = window.URL.createObjectURL(blob)
+      const link = document.createElement('a')
+      link.href = url
+      link.download = 'suricate-offline.html'
+      document.body.appendChild(link)
+      link.click()
+      link.remove()
+      window.URL.revokeObjectURL(url)
+    } catch (error) {
+      console.error(error)
+      alert('Impossible de télécharger la version hors ligne pour le moment. Merci de réessayer plus tard.')
+    }
+  }
 
   return (
     <div className='mb-8 flex items-center gap-4'>
@@ -48,6 +70,22 @@ const Header = ({ setCustomerName }) => {
             />
           </svg>
           Client
+        </button>
+        <button onClick={handleDownloadOffline} className='btn-light'>
+          <svg
+            xmlns='http://www.w3.org/2000/svg'
+            fill='none'
+            viewBox='0 0 24 24'
+            strokeWidth='1.5'
+            stroke='currentColor'
+            className='w-4'
+          >
+            <path
+              strokeLinecap='round'
+              strokeLinejoin='round'
+              d='M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M7.5 12 12 16.5m0 0L16.5 12M12 16.5V3'
+            />
+          </svg>
         </button>
       </div>
     </div>
