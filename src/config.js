@@ -47,7 +47,7 @@ export const MENU_ITEMS = [
   { section: 'Boissons', name: 'Coca Zéro', price: 2 },
   { section: 'Boissons', name: 'Ice tea', price: 2 },
   { section: 'Boissons', name: 'Oasis', price: 2 },
-  { section: 'Desserts', name: 'Cookie Nutella', price: 3.5 },
+  { section: 'Desserts', name: 'Cookie', price: 3.5 },
   { section: 'Café', name: 'Café', price: 1.5 },
 ]
 
