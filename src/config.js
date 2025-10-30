@@ -9,10 +9,23 @@ export const MENU_ITEMS = [
     ingredients: [
       { name: 'Sauce Suricate', checked: true },
       { name: 'Haché de Boeuf', checked: true },
-      { name: 'Poitrine fumée', checked: true },
       { name: 'Oignons confits', checked: true },
-      { name: 'Saint Nectaire', checked: true },
-      { name: 'Mesclun', checked: true },
+      { name: 'Poitrine fumée', checked: true },
+      { name: 'Cantal AOP', checked: true },
+      { name: 'Salade Mesclun', checked: true },
+    ],
+  },
+  {
+    section: 'Burgers',
+    name: 'L Original',
+    price: 10.5,
+    ingredients: [
+      { name: 'Sauce Suricate', checked: true },
+      { name: 'Haché de Boeuf', checked: true },
+      { name: 'Tomates séchées', checked: true },
+      { name: 'Oignons frits', checked: true },
+      { name: 'Cheddar', checked: true },
+      { name: 'Salade Mesclun', checked: true },
     ],
   },
   {
@@ -23,8 +36,8 @@ export const MENU_ITEMS = [
       { name: 'Sauce Curry', checked: true },
       { name: 'Filet de Poulet', checked: true },
       { name: 'Oignons confits', checked: true },
-      { name: 'Saint Nectaire', checked: true },
-      { name: 'Mesclun', checked: true },
+      { name: 'Cantal AOP', checked: true },
+      { name: 'Salade Mesclun', checked: true },
     ],
   },
   {
@@ -35,7 +48,7 @@ export const MENU_ITEMS = [
       { name: 'Sauce Suricate', checked: true },
       { name: 'Haché de Boeuf', checked: true },
       { name: 'Coppa', checked: true },
-      { name: 'PDT', checked: true },
+      { name: 'Pomme de terre', checked: true },
       { name: 'Raclette', checked: true },
       { name: 'Mesclun', checked: true },
     ],
@@ -47,7 +60,7 @@ export const MENU_ITEMS = [
   { section: 'Boissons', name: 'Coca Zéro', price: 2 },
   { section: 'Boissons', name: 'Ice tea', price: 2 },
   { section: 'Boissons', name: 'Oasis', price: 2 },
-  { section: 'Desserts', name: 'Fondant', price: 3.5 },
+  { section: 'Desserts', name: 'Fondant choco', price: 3.5 },
 ]
 
 const tooLongLabels = MENU_ITEMS.flatMap((item) => {
