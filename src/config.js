@@ -47,9 +47,9 @@ export const MENU_ITEMS = [
     ingredients: [
       { name: 'Sauce Suricate', checked: true },
       { name: 'Haché de Boeuf', checked: true },
-      { name: 'Coppa', checked: true },
-      { name: 'Pomme de terre', checked: true },
-      { name: 'Raclette', checked: true },
+      { name: 'Galette patate', checked: true },
+      { name: 'Oignons confits', checked: true },
+      { name: 'Saint Nectaire', checked: true },
       { name: 'Mesclun', checked: true },
     ],
   },
@@ -60,7 +60,7 @@ export const MENU_ITEMS = [
   { section: 'Boissons', name: 'Coca Zéro', price: 2 },
   { section: 'Boissons', name: 'Ice tea', price: 2 },
   { section: 'Boissons', name: 'Oasis', price: 2 },
-  { section: 'Desserts', name: 'Cookies blanc', price: 3.5 },
+  { section: 'Desserts', name: 'Sable Nutella', price: 3.5 },
 ]
 
 const tooLongLabels = MENU_ITEMS.flatMap((item) => {
