@@ -53,6 +53,17 @@ export const MENU_ITEMS = [
       { name: 'Mesclun', checked: true },
     ],
   },
+  {
+    section: 'Burgers',
+    name: 'Burger Malin',
+    price: 6,
+    ingredients: [
+      { name: 'Sauce Suricate', checked: true },
+      { name: 'Boeuf ou Poulet', checked: true },
+      { name: 'Cheddar', checked: true },
+      { name: 'Oignons frits', checked: true },
+    ],
+  },
   { section: 'Accompagnements', name: 'Frites Fraîches', price: 3.5 },
   { section: 'Boissons', name: 'Cristaline', price: 1.5 },
   { section: 'Boissons', name: 'Eau Perrier', price: 1.5 },
