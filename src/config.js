@@ -67,7 +67,7 @@ export const MENU_ITEMS = [
   },
   {
     section: 'Burgers',
-    name: 'Formule Essentielle',
+    name: 'Formule Renault',
     price: 8.3,
     ingredients: [
       { name: 'Burger Malin', checked: true },
