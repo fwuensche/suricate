@@ -100,7 +100,7 @@ export const MENU_ITEMS = [
   { section: 'Boissons', name: 'Coca Zéro', price: 2 },
   { section: 'Boissons', name: 'Ice tea', price: 2 },
   { section: 'Boissons', name: 'Oasis', price: 2 },
-  { section: 'Desserts', name: 'Cookies', price: 2 },
+  { section: 'Desserts', name: 'Biscuit Amande', price: 2 },
 ]
 
 const tooLongLabels = MENU_ITEMS.flatMap((item) => {
