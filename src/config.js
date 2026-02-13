@@ -56,7 +56,7 @@ export const MENU_ITEMS = [
   {
     section: 'Burgers',
     name: 'Burger Malin',
-    price: 6,
+    price: 8,
     ingredients: [
       { name: 'Sauce Suricate', checked: true },
       { name: 'Boeuf', checked: true },
@@ -69,6 +69,20 @@ export const MENU_ITEMS = [
     section: 'Burgers',
     name: 'Formule Renault',
     price: 8.3,
+    ingredients: [
+      { name: 'Burger Malin', checked: true },
+      { name: 'Sauce Suricate', checked: true },
+      { name: 'Boeuf', checked: true },
+      { name: 'Poulet', checked: true },
+      { name: 'Cheddar', checked: true },
+      { name: 'Oignons frits', checked: true },
+      { name: 'Frites', checked: true },
+    ],
+  },
+  {
+    section: 'Burgers',
+    name: 'Formule Sympa',
+    price: 10,
     ingredients: [
       { name: 'Burger Malin', checked: true },
       { name: 'Sauce Suricate', checked: true },
