@@ -55,14 +55,15 @@ export const MENU_ITEMS = [
   },
   {
     section: 'Burgers',
-    name: 'Burger Malin',
+    name: 'Salade Poulet',
     price: 8,
     ingredients: [
-      { name: 'Sauce Suricate', checked: true },
-      { name: 'Boeuf', checked: true },
-      { name: 'Poulet', checked: true },
-      { name: 'Cheddar', checked: true },
+      { name: 'Jeune pousse', checked: true },
+      { name: 'tomates cerises', checked: true },
+      { name: 'Copeaux Parm.', checked: true },
+      { name: 'Tomates séchées', checked: true },
       { name: 'Oignons frits', checked: true },
+      { name: 'Poulet Crousti.', checked: true },
     ],
   },
   {
@@ -102,7 +103,6 @@ export const MENU_ITEMS = [
   { section: 'Boissons', name: 'Oasis', price: 2 },
   { section: 'Desserts', name: 'Cookies', price: 2 },
   { section: 'Desserts', name: 'Mousse choco', price: 2 },
-  { section: 'Desserts', name: '1 repas complet', price: 32 },
 ]
 
 const tooLongLabels = MENU_ITEMS.flatMap((item) => {
