@@ -56,7 +56,7 @@ export const MENU_ITEMS = [
   {
     section: 'Burgers',
     name: 'Salade Poulet',
-    price: 8,
+    price: 8.5,
     ingredients: [
       { name: 'Jeune pousse', checked: true },
       { name: 'tomates cerises', checked: true },
