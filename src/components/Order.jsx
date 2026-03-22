@@ -22,12 +22,16 @@ const Order = ({ orderItems, setOrderItems, customerName, paymentMethod, discoun
     // Format the order content
     let content = ''
 
-    // Add ESC/POS formatting for Android/RawBT - everything in double size
-    content += DOUBLE_SIZE
-    content += CENTER
+    // Add ESC/POS formatting only for Android/RawBT
+    if (isAndroid) {
+      content += DOUBLE_SIZE
+      content += CENTER
+    }
     content += 'SURICATE\n'
     content += 'Ticket de vente\n'
-    content += LEFT
+    if (isAndroid) {
+      content += LEFT
+    }
     content += new Date().toLocaleString('fr-FR', { dateStyle: 'short', timeStyle: 'short' }) + '\n\n'
 
     if (customerName) {
