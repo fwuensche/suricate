@@ -12,7 +12,7 @@ export const MENU_ITEMS = [
       { name: 'Oignons confits', checked: true },
       { name: 'Poitrine fumée', checked: true },
       { name: 'Cantal AOP', checked: true },
-      { name: 'Salade Mesclun', checked: true },
+      { name: 'Salade', checked: true },
     ],
   },
   {
@@ -25,7 +25,7 @@ export const MENU_ITEMS = [
       { name: 'Tomates séchées', checked: true },
       { name: 'Oignons frits', checked: true },
       { name: 'Cheddar', checked: true },
-      { name: 'Salade Mesclun', checked: true },
+      { name: 'Salade', checked: true },
     ],
   },
   {
@@ -37,7 +37,7 @@ export const MENU_ITEMS = [
       { name: 'Filet de Poulet', checked: true },
       { name: 'Oignons confits', checked: true },
       { name: 'Cantal AOP', checked: true },
-      { name: 'Salade Mesclun', checked: true },
+      { name: 'Salade', checked: true },
     ],
   },
   {
@@ -50,7 +50,7 @@ export const MENU_ITEMS = [
       { name: 'Saint Nectaire', checked: true },
       { name: 'Oignons frits', checked: true },
       { name: 'Jambon cru', checked: true },
-      { name: 'Mesclun', checked: true },
+      { name: 'Salade', checked: true },
     ],
   },
   {
