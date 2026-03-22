@@ -1,7 +1,7 @@
 import Logo from '../assets/suricate.png'
 import PropTypes from 'prop-types'
 
-const OFFLINE_BUILD_URL = 'https://raw.githubusercontent.com/fwuensche/suricate/main/dist/index.html'
+const OFFLINE_BUILD_URL = 'https://fwuensche.github.io/suricate/'
 
 const Header = ({ setCustomerName }) => {
   const handleAddCustomer = () => {
