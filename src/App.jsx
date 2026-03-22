@@ -9,6 +9,7 @@ function App() {
   const [orderItems, setOrderItems] = useState([])
   const [paymentMethod, setPaymentMethod] = useState(null)
   const [customerName, setCustomerName] = useState('')
+  const [discount, setDiscount] = useState(false)
 
   return (
     <div className='flex flex-col lg:flex-row'>
@@ -25,6 +26,8 @@ function App() {
           paymentMethod={paymentMethod}
           customerName={customerName}
           setOrderItems={setOrderItems}
+          discount={discount}
+          setDiscount={setDiscount}
         />
       </div>
     </div>

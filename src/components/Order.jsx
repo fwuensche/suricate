@@ -6,8 +6,8 @@ import PropTypes from 'prop-types'
 
 const WIDTH = 48
 
-const Order = ({ orderItems, setOrderItems, customerName, paymentMethod }) => {
-  const { subtotal, total, formulas } = getAmounts(orderItems)
+const Order = ({ orderItems, setOrderItems, customerName, paymentMethod, discount, setDiscount }) => {
+  const { subtotal, total, formulaDiscount, discountAmount, formulas } = getAmounts(orderItems, discount)
 
   const onPrint = () => {
     // Check if we're on Android
@@ -61,6 +61,14 @@ const Order = ({ orderItems, setOrderItems, customerName, paymentMethod }) => {
 
     // For double-width text, WIDTH is halved
     content += `\nSous-total${' '.repeat(WIDTH / 2 - 'Sous-total'.length - subtotalStr.length)}${subtotalStr}\n`
+    if (formulaDiscount > 0) {
+      const formulaStr = formatEuros(-formulaDiscount)
+      content += `Remise formule${' '.repeat(WIDTH / 2 - 'Remise formule'.length - formulaStr.length)}${formulaStr}\n`
+    }
+    if (discount) {
+      const discountStr = formatEuros(-discountAmount)
+      content += `Remise 10%${' '.repeat(WIDTH / 2 - 'Remise 10%'.length - discountStr.length)}${discountStr}\n`
+    }
     content += `Total${' '.repeat(WIDTH / 2 - 'Total'.length - totalStr.length)}${totalStr}\n`
 
     if (paymentMethod) content += `\nPaiement: ${paymentMethod}\n`
@@ -141,7 +149,19 @@ const Order = ({ orderItems, setOrderItems, customerName, paymentMethod }) => {
       </div>
       <hr />
       <OrderLine label='Sous-total' value={subtotal} />
+      {formulaDiscount > 0 && <OrderLine label='Remise formule' value={-formulaDiscount} />}
+      {discount && <OrderLine label='Remise 10%' value={-discountAmount} />}
       <OrderLine label='Total' value={total} />
+      <div className='print:hidden'>
+        <button
+          onClick={() => setDiscount((d) => !d)}
+          className={`w-full py-2 px-4 rounded text-sm font-medium transition-colors ${
+            discount ? 'bg-green-600 text-white' : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+          }`}
+        >
+          Remise 10%
+        </button>
+      </div>
       {paymentMethod && (
         <>
           <hr />
@@ -176,6 +196,8 @@ Order.propTypes = {
   setOrderItems: PropTypes.func.isRequired,
   customerName: PropTypes.string,
   paymentMethod: PropTypes.string,
+  discount: PropTypes.bool.isRequired,
+  setDiscount: PropTypes.func.isRequired,
 }
 
 export default Order

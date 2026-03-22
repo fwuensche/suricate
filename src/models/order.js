@@ -49,11 +49,14 @@ function getBestPossiblePrice(orderItems = []) {
   return { bestPrice, formulas: applied }
 }
 
-export function getAmounts(orderItems) {
+export function getAmounts(orderItems, discount = false) {
   const subtotal = sum(orderItems.map((i) => i.price))
   const { bestPrice, formulas } = getBestPossiblePrice(orderItems)
   const total = Math.min(bestPrice, subtotal)
-  return { subtotal, total, formulas }
+  const formulaDiscount = Math.round((subtotal - total) * 100) / 100
+  const discountAmount = discount ? Math.round(total * 0.1 * 100) / 100 : 0
+  const finalTotal = Math.round((total - discountAmount) * 100) / 100
+  return { subtotal, total: finalTotal, formulaDiscount, discountAmount, formulas }
 }
 
 export function formatEuros(amount) {
