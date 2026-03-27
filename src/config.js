@@ -46,10 +46,9 @@ export const MENU_ITEMS = [
     price: 10.5,
     ingredients: [
       { name: 'Sauce Suricate', checked: true },
-      { name: 'Haché de Boeuf', checked: true },
-      { name: 'Saint Nectaire', checked: true },
-      { name: 'Oignons frits', checked: true },
-      { name: 'Jambon cru', checked: true },
+      { name: 'Poisson pané', checked: true },
+      { name: 'Oignons confits', checked: true },
+      { name: 'Cheddar', checked: true },
       { name: 'Salade', checked: true },
     ],
   },
