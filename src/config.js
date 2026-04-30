@@ -33,7 +33,7 @@ export const MENU_ITEMS = [
     name: 'Suprême poulet',
     price: 10.5,
     ingredients: [
-      { name: 'Sauce Curry', checked: true },
+      { name: 'Sauce Suricate', checked: true },
       { name: 'Filet de Poulet', checked: true },
       { name: 'Oignons confits', checked: true },
       { name: 'Cantal AOP', checked: true },
@@ -46,9 +46,10 @@ export const MENU_ITEMS = [
     price: 10.5,
     ingredients: [
       { name: 'Sauce Suricate', checked: true },
-      { name: 'Poisson pané', checked: true },
-      { name: 'Oignons confits', checked: true },
-      { name: 'Cheddar', checked: true },
+      { name: 'Haché de Boeuf', checked: true },
+      { name: 'Saint Nectaire', checked: true },
+      { name: 'Oignons frits', checked: true },
+      { name: 'Rosette', checked: true },
       { name: 'Salade', checked: true },
     ],
   },
