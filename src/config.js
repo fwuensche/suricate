@@ -48,9 +48,8 @@ export const MENU_ITEMS = [
       { name: 'Sauce Suricate', checked: true },
       { name: 'Haché de Boeuf', checked: true },
       { name: 'Tomates séchées', checked: true },
-      { name: 'Chèvre', checked: true },
-      { name: 'Miel', checked: true },
-      { name: 'Salade', checked: true },
+      { name: 'Mozzarella', checked: true },
+      { name: 'Basilic', checked: true },
     ],
   },
   {
