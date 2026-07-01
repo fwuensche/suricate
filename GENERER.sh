@@ -2,7 +2,7 @@
 
 cd /Users/brunoferre/Desktop/MENU/suricate
 
-git pull && npm install && npm run deploy && git add . && git commit -m "update" && git push
+git pull && npm install && npm run deploy && git add . && (git diff --cached --quiet || git commit -m "update") && git push
 
 if [ $? -eq 0 ]; then
     exit 0
