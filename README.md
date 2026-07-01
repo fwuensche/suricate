@@ -6,8 +6,41 @@ Point of sale application with thermal printer support.
 
 ```bash
 npm run dev     # Start the development server
-npm run deploy  # Deploy the application
 ```
+
+See [Deployment](#deployment) below for how the app is published.
+
+## Deployment
+
+The app is published to GitHub Pages at **https://anteloio.github.io/suricate/**.
+
+There are two ways it gets deployed:
+
+### Manual deploy — Bruno's machine (primary)
+
+Bruno deploys from his own computer by running the `GENERER.sh` script, which lives in his
+local clone at `/Users/brunoferre/Desktop/MENU/suricate`:
+
+```bash
+./GENERER.sh
+```
+
+The script runs the full cycle, in order:
+
+1. `git pull` — pull the latest changes
+2. `npm install` — install/update dependencies
+3. `npm run deploy` — build the app and push `dist/` to the `gh-pages` branch (`gh-pages -d dist`)
+4. `git add . && git commit -m "update" && git push` — commit the rebuilt `dist/` and push to `main`
+
+If any step fails, the script prints `UNE ERREUR EST SURVENUE` and pauses so the error stays visible.
+
+> **Note:** `dist/` is committed to the repo on purpose (it is *not* gitignored), because
+> `GENERER.sh` rebuilds and commits it on every deploy.
+
+### Automatic deploy — GitHub Actions
+
+Every push to `main` also triggers the `.github/workflows/deploy.yml` workflow, which builds the
+app and publishes `dist/` to GitHub Pages automatically.
 
 ## Connecting from Mobile Device (Android Tablet)
 
