@@ -47,9 +47,9 @@ export const MENU_ITEMS = [
     ingredients: [
       { name: 'Sauce Suricate', checked: true },
       { name: 'Haché de Boeuf', checked: true },
-      { name: 'Gouda', checked: true },
+      { name: 'Emmental', checked: true },
+      { name: 'Saucisse fumée', checked: true },
       { name: 'Oignons frits', checked: true },
-      { name: 'Chorizo', checked: true },
       { name: 'Salade', checked: true },
     ],
   },
@@ -58,7 +58,7 @@ export const MENU_ITEMS = [
     name: 'Salade Poulet',
     price: 8.5,
     ingredients: [
-      { name: 'Jeune pousse', checked: true },
+      { name: 'Salade', checked: true },
       { name: 'tomates cerises', checked: true },
       { name: 'Copeaux Parm.', checked: true },
       { name: 'Tomates séchées', checked: true },
