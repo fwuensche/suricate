@@ -92,7 +92,7 @@ export const MENU_ITEMS = [
   { section: 'Desserts', name: 'Mousse choco', price: 2 },
   { section: 'Supplement', name: 'Sup. viande ', price: 3 },
   { section: 'Supplement', name: 'Sup. Ingredient ', price: 1 },
-  { section: 'Note de frais', name: '1 Repas complet', price: 16.5 },
+  { section: 'Note de frais', name: '1 Repas', price: 16.5 },
   { section: 'Note de frais', name: '1 Repas complet', price: 33 },
 ]
 
