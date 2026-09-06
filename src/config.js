@@ -90,7 +90,8 @@ export const MENU_ITEMS = [
   { section: 'Desserts', name: 'Cookies Chocolat', price: 2 },
   { section: 'Desserts', name: 'Cookies Vanille', price: 2 },
   { section: 'Desserts', name: 'Mousse choco', price: 2 },
-  { section: 'Desserts', name: '1 Repas complet', price: 16.5 },
+  { section: 'Note', name: '1 Repas complet', price: 16.5 },
+  { section: 'Note', name: '1 Repas complet', price: 33 },
   { section: 'Supplement', name: 'Sup. viande ', price: 3 },
   { section: 'Supplement', name: 'Sup. Ingredient ', price: 1 },
 ]
